@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+
+    <body>
+
+        <div class="instruction">
+            Tap 'Continue' in the Hydro app.
+        </div>
+
+        <div class="instruction">
+            Then, enter the message below into the app:
+        </div>
+
+        <div class="message"><%= registerMessage %></div>
+
+        <div class="instruction">
+            Once 'sent', click the button below:
+        </div>
+
+        <form action="/confirm" method="post" id="registerForm">
+            <button type="submit" form="registerForm" class="btn">Confirm</button>
+        </form>
+    </body>
+</html>

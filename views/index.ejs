@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+
+        <div class="instruction">
+            Select an environment:
+        </div>
+
+        <select name="environment" class="dropdown" form="loginForm">
+            <% environments.forEach(env => { %>
+                <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
+            <% }) %>
+        </select>
+
+        <br>
+        <br>
+
+        <div class="instruction">
+            Login with a user listed below:
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Hydro ID</th>
+            </tr>
+
+            <% users.forEach(user => {%>
+                <tr class="dataRow">
+                  <td><%= user.username %></td>
+                  <td><%= user.password %></td>
+                  <td><%= user.hydroId %></td>
+                </tr>
+            <% }) %>
+        </table>
+
+        <br>
+
+        <form action="/login" method="post" id="loginForm">
+            <div>
+                <div class="inputLabel">Username:</div>
+                <input class="inputField" type="text" name="username" autocomplete="off">
+                <br>
+            </div>
+            <div style="margin-top: 10px;">
+                <div class="inputLabel">Password:</div>
+                <input class="inputField" type="password" name="password">
+                <br>
+            </div>
+            <button type="submit" form="loginForm" style="margin-top: 15px;">Submit</button>
+        </form>
+
+        <br>
+        <br>
+
+        <div class="instruction">
+            If you'd like to register a new Hydro ID to this application, select an environment and enter the ID below:
+        </div>
+
+        <select name="environment" class="dropdown" form="registerForm">
+            <% environments.forEach(env => { %>
+                <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
+            <% }) %>
+        </select>
+
+        <form action="/register" method="post" id="registerForm">
+            <div style="margin-top: 10px;">
+                <div class="inputLabel">Hydro ID:</div>
+                <input class="inputField" type="text" name="registerId">
+                <br>
+            </div>
+            <button type="submit" form="registerForm" style="margin-top: 15px;">Register</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+# Node.js
+.idea/
+node_modules/
+npm-debug.log
+nodemon.json
+config.js

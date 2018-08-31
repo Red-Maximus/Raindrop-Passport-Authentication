@@ -1,0 +1,46 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.dropdown {
+  margin-bottom: 15px;
+}
+
+.table {
+  width: 300px;
+  border: solid;
+  border-width: 1px;
+}
+
+.tableHead {
+  width: 100px;
+}
+
+.dataRow {
+  text-align: center;
+}
+
+.inputLabel {
+  width: 100px;
+}
+
+.inputField {
+  width: 160px;
+}
+
+.instruction {
+  color: green;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.message {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}

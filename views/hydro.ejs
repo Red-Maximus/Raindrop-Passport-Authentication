@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+
+    <body>
+        <div class="instruction">
+            Enter the message below into the Hydro app:
+        </div>
+
+        <div class="message"><%= hydroMessage %></div>
+
+        <div class="instruction">
+            Once 'sent', click the button below:
+        </div>
+
+        <form action="/hydro" method="post" id="hydroForm">
+            <button type="submit" form="hydroForm" class="btn">Verify</button>
+        </form>
+    </body>
+</html>
