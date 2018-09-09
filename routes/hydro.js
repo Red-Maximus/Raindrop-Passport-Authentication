@@ -12,7 +12,7 @@ hydro.use(passport.session());
 hydro.get('/hydro', function(req, res) {
     // Generate the message to display
     req.session.hydroMessage = HydrogenAPI.raindrop.generateMessage();
-    res.render('hydro', { title: 'Express' , hydroMessage: req.session.hydroMessage, API: HydrogenAPI });
+    res.render('hydro', { title: 'Verify' , hydroMessage: req.session.hydroMessage, API: HydrogenAPI });
 });
 
 /* Authenticate User */
