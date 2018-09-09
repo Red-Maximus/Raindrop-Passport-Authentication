@@ -10,7 +10,7 @@ To install this app, clone the repository and install the dependencies.
     $ npm install
 ```
 
-Add a `config.js` file into the `app` directory. This is needed to initialize the Hydrogen API.
+Add a `config.js` file into the `Raindrop-Passport-Authentication` directory. This is needed to initialize the Hydrogen API.
 ```    
     const sandClientId = "[Put Sandbox Client ID Here]",
         sandClientSecret = "[Put Sandbox Client Secret Here]",
