@@ -7,36 +7,38 @@ a {
   color: #00B7FF;
 }
 
-.dropdown {
-  margin-bottom: 15px;
+.navbar-default {
+  background-color: #428bca;
+  border-radius: 4px;
+  margin-bottom: 25px;
 }
 
-.table {
-  width: 300px;
-  border: solid;
-  border-width: 1px;
+.header-text {
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 15px;
+  display: inline-block;
 }
 
-.tableHead {
-  width: 100px;
+.header-icon {
+  font-size: 34px;
 }
 
-.dataRow {
+.raindrop-instruction {
   text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-.inputLabel {
-  width: 100px;
+.raindrop-message {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.inputField {
-  width: 160px;
-}
-
-.instruction {
-  color: green;
-  font-style: italic;
-  margin-bottom: 5px;
+.input-field {
+  margin-bottom: 15px;
 }
 
 .message {

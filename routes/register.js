@@ -1,16 +1,19 @@
 const express = require('express'),
     HydrogenAPI = require('../auth').HydrogenAPI,
-    router = express.Router();
+    router = express.Router(),
+    environments = require('../auth').environments;
 
 /* Initialize passport for this route */
 
 /* Register user. */
-router.post('/register', async function(req, res) {
-    // Switch the Hydrogen API to the correct environment
-    HydrogenAPI.switchEnv(req.body.environment);
+router.get('/register', function(req, res) {
+    console.log(HydrogenAPI.environment);
 
-    // Preserve the 'registerId' in the session
-    req.session.registerId = req.body.registerId;
+    res.render('register', { title: 'Register' , registerMessage: req.session.registerMessage, API: HydrogenAPI, environments: environments });
+});
+
+router.post('/register', async function(req, res) {
+    HydrogenAPI.switchEnv(req.body.environment);
 
     // Register the user to this application
     await HydrogenAPI.raindrop.partner.registerUser(req.session.registerId).catch(err => err);
@@ -18,7 +21,7 @@ router.post('/register', async function(req, res) {
     // Generate a message so the user can verify the registration
     req.session.registerMessage = HydrogenAPI.raindrop.generateMessage();
 
-    res.render('register', { title: 'Express' , registerMessage: req.session.registerMessage });
+    res.render('register', { title: 'Register' , registerMessage: req.session.registerMessage, API: HydrogenAPI });
 });
 
 router.post('/confirm', async function(req, res) {

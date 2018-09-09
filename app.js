@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'Super Secret', resave: false, saveUninitialized: false }));
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 // Catches '/json/version' and '/favicon.ico' GET requests
 app.get(['/json*', '/favicon.ico'], function(req, res) {

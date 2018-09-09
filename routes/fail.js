@@ -1,9 +1,10 @@
 const express = require('express'),
-    router = express.Router();
+    router = express.Router(),
+    HydrogenAPI = require('../auth').HydrogenAPI;
 
 /* GET fail page. */
 router.get('/fail', function(req, res) {
-    res.send('Whoops');
+    res.render('fail', { title: 'Failure', API: HydrogenAPI });
 });
  
 module.exports = router;

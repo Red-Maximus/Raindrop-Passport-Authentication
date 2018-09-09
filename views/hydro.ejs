@@ -2,22 +2,27 @@
 <html>
     <head>
         <title><%= title %></title>
+        <link rel='stylesheet' href='css/bootstrap.min.css'/>
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
 
+    <header>
+        <% include ../partials/header.ejs %>
+    </header>
+
     <body>
-        <div class="instruction">
-            Enter the message below into the Hydro app:
+         <div class="row">
+            <div class="well col-xs-1" style="margin-left: 15px;">
+                <div class="raindrop-instruction">
+                    Enter the into the Hydro App:
+                </div>
+                <div class="raindrop-message">
+                    <%= hydroMessage %>
+                </div>
+            </div>
         </div>
-
-        <div class="message"><%= hydroMessage %></div>
-
-        <div class="instruction">
-            Once 'sent', click the button below:
-        </div>
-
         <form action="/hydro" method="post" id="hydroForm">
-            <button type="submit" form="hydroForm" class="btn">Verify</button>
+            <button type="submit" form="hydroForm" class="btn btn-primary">Verify</button>
         </form>
     </body>
 </html>

@@ -2,79 +2,44 @@
 <html>
     <head>
         <title><%= title %></title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='css/bootstrap.min.css'/>
+        <link rel='stylesheet' href='/stylesheets/style.css'/>
     </head>
+
+    <header>
+        <% include ../partials/header.ejs %>
+    </header>
+
     <body>
-
-        <div class="instruction">
-            Select an environment:
+        <div class="row">
+            <div class="form-group col-xs-2">
+                <label>Select Environment:</label>
+                <select name="environment" class="form-control" data-style="btn-info" form="loginForm">
+                    <% environments.forEach(env => { %>
+                        <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
+                    <% }) %>
+                </select>
+            </div>
         </div>
 
-        <select name="environment" class="dropdown" form="loginForm">
-            <% environments.forEach(env => { %>
-                <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
-            <% }) %>
-        </select>
-
-        <br>
-        <br>
-
-        <div class="instruction">
-            Login with a user listed below:
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="/login" method="post" id="loginForm">
+                    <div class="row">
+                        <div class="col-xs-4 input-field">
+                            <label>Username:</label>
+                            <input class="form-control" type="text" name="username" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 input-field">
+                            <label>Password:</label>
+                            <input class="form-control" type="password" name="password">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit" form="loginForm">Submit</button>
+                </form>
+            </div>
         </div>
-
-        <table class="table">
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Hydro ID</th>
-            </tr>
-
-            <% users.forEach(user => {%>
-                <tr class="dataRow">
-                  <td><%= user.username %></td>
-                  <td><%= user.password %></td>
-                  <td><%= user.hydroId %></td>
-                </tr>
-            <% }) %>
-        </table>
-
-        <br>
-
-        <form action="/login" method="post" id="loginForm">
-            <div>
-                <div class="inputLabel">Username:</div>
-                <input class="inputField" type="text" name="username" autocomplete="off">
-                <br>
-            </div>
-            <div style="margin-top: 10px;">
-                <div class="inputLabel">Password:</div>
-                <input class="inputField" type="password" name="password">
-                <br>
-            </div>
-            <button type="submit" form="loginForm" style="margin-top: 15px;">Submit</button>
-        </form>
-
-        <br>
-        <br>
-
-        <div class="instruction">
-            If you'd like to register a new Hydro ID to this application, select an environment and enter the ID below:
-        </div>
-
-        <select name="environment" class="dropdown" form="registerForm">
-            <% environments.forEach(env => { %>
-                <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
-            <% }) %>
-        </select>
-
-        <form action="/register" method="post" id="registerForm">
-            <div style="margin-top: 10px;">
-                <div class="inputLabel">Hydro ID:</div>
-                <input class="inputField" type="text" name="registerId">
-                <br>
-            </div>
-            <button type="submit" form="registerForm" style="margin-top: 15px;">Register</button>
-        </form>
     </body>
 </html>

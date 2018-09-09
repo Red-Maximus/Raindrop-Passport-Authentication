@@ -2,27 +2,51 @@
 <html>
     <head>
         <title><%= title %></title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='css/bootstrap.min.css'/>
+        <link rel='stylesheet' href='/stylesheets/style.css'/>
     </head>
 
+    <header>
+        <% include ../partials/header.ejs %>
+    </header>
+
     <body>
+        <% if(!registerMessage) { %>
+            <form action="/register" method="post" id="registerForm">
+                <div class="row">
+                    <div class="form-group col-xs-2">
+                        <label>Select Environment:</label>
+                        <select name="environment" class="form-control" data-style="btn-info" form="registerForm">
+                            <% environments.forEach(env => { %>
+                                <option <% if(API.environment == env) { %> selected <% } %> value="<%= env %>"><%= env %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 input-field">
+                        <label>Hydro ID:</label>
+                        <input class="form-control" type="text" name="hydroId" autocomplete="off">
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" form="registerForm">Register</button>
+            </form>
+        <% } %>
 
-        <div class="instruction">
-            Tap 'Continue' in the Hydro app.
-        </div>
-
-        <div class="instruction">
-            Then, enter the message below into the app:
-        </div>
-
-        <div class="message"><%= registerMessage %></div>
-
-        <div class="instruction">
-            Once 'sent', click the button below:
-        </div>
-
-        <form action="/confirm" method="post" id="registerForm">
-            <button type="submit" form="registerForm" class="btn">Confirm</button>
-        </form>
+        <% if(registerMessage) { %>
+            <div class="row">
+                <div class="well col-xs-1" style="margin-left: 15px;">
+                    <div class="raindrop-instruction">
+                        Enter the into the Hydro App:
+                    </div>
+                    <div class="raindrop-message">
+                        <%= registerMessage %>
+                    </div>
+                </div>
+            </div>
+            <form action="/confirm" method="post" id="confirmForm">
+                <button type="submit" form="confirmForm" class="btn btn-primary">Confirm</button>
+            </form>
+        <% } %>
     </body>
 </html>
