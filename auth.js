@@ -45,8 +45,6 @@ HydrogenAPI.prototype.switchEnv = function(env) {
         // Initialize a new raindrop for the toggled environment
         api.raindrop = initializeRaindrop(api.environment);
     }
-
-    console.log(api.environment);
 };
 
 function initializeRaindrop(env) {
